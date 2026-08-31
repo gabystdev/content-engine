@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+  <p class="meta">
+    {{ .Date.Format "2 January 2006" }}
+    {{ with .Params.affiliate }} · Categoría afiliado: {{ . }}{{ end }}
+  </p>
+  <div class="content">
+    {{ .Content }}
+  </div>
+  {{ with .Params.faqs }}
+  <section class="faq">
+    <h2>FAQ</h2>
+    {{ range . }}
+    <h3>{{ index . "q" }}</h3>
+    <p>{{ index . "a" }}</p>
+    {{ end }}
+  </section>
+  {{ end }}
+  <p class="affiliate-note">Algunos enlaces de esta página son de afiliados. Si compras a través de ellos, podemos recibir una comisión sin coste adicional para ti.</p>
+</article>
+{{ end }}

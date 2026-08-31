@@ -1,0 +1,9 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+{{ if .Permalink }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+{{ range site.Home.AllTranslations }}<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ site.Home.Permalink }}">
+<link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+{{ if not .IsHome }}{{ partial "jsonld.html" . }}{{ end }}

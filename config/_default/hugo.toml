@@ -1,0 +1,49 @@
+baseURL = "https://gabystdev.github.io/content-engine/"
+title = "Content Engine"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+enableEmoji = false
+disableKinds = ["taxonomy", "term"]
+paginate = 20
+
+[params]
+  description = "Guías, comparativas y análisis prácticos con datos reales"
+  author = "Content Engine"
+
+[languages]
+[languages.en]
+  contentDir = "content/en"
+  languageCode = "en"
+  languageName = "English"
+  weight = 1
+[languages.es]
+  contentDir = "content/es"
+  languageCode = "es-ES"
+  languageName = "Español"
+  weight = 2
+[languages.it]
+  contentDir = "content/it"
+  languageCode = "it-IT"
+  languageName = "Italiano"
+  weight = 3
+[languages.fr]
+  contentDir = "content/fr"
+  languageCode = "fr-FR"
+  languageName = "Français"
+  weight = 4
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[markup]
+[markup.goldmark]
+  renderer.unsafe = true
+[markup.tableOfContents]
+  endLevel = 3
+  startLevel = 2

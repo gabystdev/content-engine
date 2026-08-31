@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <header>
+    <a class="brand" href="{{ site.Home.Permalink }}">{{ site.Title }}</a>
+    <nav>
+      {{ range site.Home.AllTranslations }}
+        <a href="{{ .Permalink }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>
+      {{ end }}
+    </nav>
+  </header>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer>
+    <p>{{ site.Title }} — {{ site.Params.description }}</p>
+  </footer>
+</body>
+</html>

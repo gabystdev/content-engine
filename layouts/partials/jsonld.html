@@ -1,0 +1,8 @@
+{{ $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "datePublished" .Date.Format "2006-01-02" "inLanguage" site.Language.LanguageCode "mainEntityOfPage" .Permalink }}
+{{ if .Params.author }}{{ $article = merge $article (dict "author" (dict "@type" "Person" "name" .Params.author)) }}{{ end }}
+{{ if .Params.faqs }}
+{{ $q := slice }}
+{{ range .Params.faqs }}{{ $q = $q | append (dict "@type" "Question" "name" (index . "q") "acceptedAnswer" (dict "@type" "Answer" "text" (index . "a"))) }}{{ end }}
+{{ $article = merge $article (dict "@graph" (dict "@type" "FAQPage" "mainEntity" $q)) }}
+{{ end }}
+<script type="application/ld+json">{{ jsonify $article | safeJS }}</script>
