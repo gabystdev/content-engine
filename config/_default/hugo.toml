@@ -4,7 +4,9 @@ defaultContentLanguage = "en"
 enableRobotsTXT = true
 enableEmoji = false
 disableKinds = ["taxonomy", "term"]
-paginate = 20
+
+[pagination]
+  pagerSize = 20
 
 [params]
   description = "Guías, comparativas y análisis prácticos con datos reales"
