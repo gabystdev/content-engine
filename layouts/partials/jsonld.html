@@ -1,4 +1,5 @@
-{{ $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "datePublished" .Date.Format "2006-01-02" "inLanguage" site.Language.LanguageCode "mainEntityOfPage" .Permalink }}
+{{ $date := .Date.Format "2006-01-02" }}
+{{ $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "datePublished" $date "inLanguage" site.Language.LanguageCode "mainEntityOfPage" .Permalink }}
 {{ if .Params.author }}{{ $article = merge $article (dict "author" (dict "@type" "Person" "name" .Params.author)) }}{{ end }}
 {{ if .Params.faqs }}
 {{ $q := slice }}
